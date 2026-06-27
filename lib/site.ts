@@ -27,9 +27,9 @@ export const site = {
     "https://www.google.com/maps/search/?api=1&query=" +
     encodeURIComponent("Öveçler 1335. Sk. 8/B, 06460 Çankaya Ankara"),
   hours: [
-    { day: "Pazartesi – Cuma", time: "09:00 – 20:00" },
-    { day: "Cumartesi – Pazar", time: "10:00 – 18:00" },
-    { day: "Acil servis", time: "7/24 açık" },
+    { day: "Hafta içi", time: "7/24 Açık" },
+    { day: "Hafta sonu", time: "7/24 Açık" },
+    { day: "Acil servis", time: "Kesintisiz" },
   ],
   social: {
     instagram: "https://www.instagram.com/petinternal/",

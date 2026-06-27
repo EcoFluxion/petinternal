@@ -74,11 +74,16 @@ export function Contact() {
                 </span>
                 <span className="text-sm leading-relaxed">
                   <span className="block font-semibold text-ink">Çalışma Saatleri</span>
-                  <span className="mt-1 block space-y-0.5 text-muted">
+                  <span className="mt-1 block space-y-1 text-muted">
                     {site.hours.map((h) => (
-                      <span key={h.day} className="flex justify-between gap-3">
-                        <span>{h.day}</span>
-                        <span className="font-medium text-ink/80">{h.time}</span>
+                      <span
+                        key={h.day}
+                        className="flex items-center justify-between gap-3"
+                      >
+                        <span className="whitespace-nowrap">{h.day}</span>
+                        <span className="whitespace-nowrap font-medium text-ink/80">
+                          {h.time}
+                        </span>
                       </span>
                     ))}
                   </span>

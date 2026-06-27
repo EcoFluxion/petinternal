@@ -62,15 +62,16 @@ export function Hero() {
 
             {/* Floating rating card */}
             <div className="absolute -bottom-5 -left-2 w-[13.5rem] rounded-2xl border border-hairline bg-surface/95 p-4 shadow-card backdrop-blur-sm sm:-left-6 sm:w-[14.5rem]">
-              <div className="flex items-center gap-1 text-gold" aria-hidden="true">
+              <div
+                className="flex items-center gap-1 text-gold"
+                role="img"
+                aria-label="5 üzerinden 5 yıldız"
+              >
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-current" />
+                  <Star key={i} className="h-5 w-5 fill-current" aria-hidden="true" />
                 ))}
               </div>
-              <p className="mt-2 font-display text-2xl font-semibold leading-none text-ink">
-                5<span className="text-base font-normal text-muted"> / 5</span>
-              </p>
-              <p className="mt-1 text-xs text-muted">
+              <p className="mt-2.5 text-sm text-muted">
                 Pati dostlarının bizleri değerlendirmesi
               </p>
             </div>

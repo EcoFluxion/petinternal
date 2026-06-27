@@ -24,9 +24,8 @@ Pet Internal Veteriner Kliniği, uzman veteriner hekim Öykü Yalçın ve ekibi 
 - [Kısırlaştırma hakkında bilmeniz gerekenler](https://petinternal.com/blog/kisirlastirma-rehberi): Doğru yaş, süreç ve sonrası bakım.
 
 ## Çalışma Saatleri
-- Pazartesi – Cuma: 09:00 – 20:00
-- Cumartesi – Pazar: 10:00 – 18:00
-- Acil servis: 7/24 açık
+- Her gün (hafta içi ve hafta sonu): 7/24 açık
+- Acil servis: kesintisiz, 7 gün 24 saat
 
 ## İletişim
 - Telefon: 0536 290 69 58
