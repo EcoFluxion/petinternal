@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Pet Internal — theme tokens
+   Warm cream (light) / warm forest-charcoal (dark), sage accent.
+   Values are space-separated RGB for Tailwind's <alpha-value>.
+   ============================================================ */
+:root {
+  --color-paper: 250 249 245; /* #FAF9F5 warm off-white */
+  --color-cream: 244 241 233; /* #F4F1E9 warmer section tint */
+  --color-surface: 255 255 255; /* cards on light */
+  --color-ink: 28 37 31; /* #1C251F deep warm charcoal-green */
+  --color-muted: 91 104 95; /* #5B685F */
+  --color-hairline: 233 228 218; /* #E9E4DA warm hairline */
+  --color-brand: 47 107 79; /* #2F6B4F sage-forest */
+  --color-brand-fg: 255 255 255;
+}
+
+.dark {
+  --color-paper: 15 19 15; /* #0F130F warm near-black forest */
+  --color-cream: 22 27 21; /* #161B15 */
+  --color-surface: 26 32 25; /* #1A2019 cards */
+  --color-ink: 236 234 225; /* #ECEAE1 warm off-white */
+  --color-muted: 165 174 162; /* #A5AEA2 */
+  --color-hairline: 44 51 43; /* #2C332B */
+  --color-brand: 122 183 149; /* #7AB795 brighter sage for dark surfaces */
+  --color-brand-fg: 15 19 15;
+}
+
+@layer base {
+  * {
+    @apply border-hairline;
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight text-ink;
+  }
+  ::selection {
+    background-color: rgb(var(--color-brand) / 0.22);
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand ring-offset-2 ring-offset-paper;
+  }
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+@layer components {
+  .container-px {
+    @apply mx-auto w-full max-w-content px-5 sm:px-7 lg:px-8;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-brand;
+  }
+  .hairline-t {
+    @apply border-t border-hairline;
+  }
+  /* Reveal on scroll (toggled by data-reveal observer) */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}

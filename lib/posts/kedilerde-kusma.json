@@ -1,0 +1,88 @@
+{
+  "slug": "kedilerde-kusma",
+  "title": "Kedilerde kusma: ne zaman veterinerinize gitmelisiniz?",
+  "category": "Kedi Sağlığı",
+  "image": "/images/blog-cat-vomiting.jpg",
+  "imageAlt": "Yumuşak bir battaniyede uyuyan tekir bir kedi",
+  "date": "12 Haziran 2026",
+  "dateISO": "2026-06-12",
+  "updatedISO": "2026-06-26",
+  "excerpt": "Kedilerde kusma her zaman tehlikeli değildir ama bazı belirtiler acil müdahale gerektirir. Nedenleri, evde yapılması gerekenler ve klinik başvuru zamanı.",
+  "readTime": "6 dk okuma",
+  "keywords": [
+    "kedilerde kusma",
+    "kedi kusması nedenleri",
+    "tüy yumağı",
+    "kedi sağlığı",
+    "Çankaya veteriner",
+    "Ankara veteriner kliniği",
+    "kedide acil belirtiler",
+    "kronik kusma kedi"
+  ],
+  "intro": "Kedi sahiplerinin en sık karşılaştığı durumlardan biri kusmadır ve çoğu zaman ciddi bir hastalığın işareti değildir. Ancak bazı kusma tabloları gecikmeden değerlendirilmesi gereken bir sağlık sorununu haber verebilir. Bu yazıda kusmanın türlerini, yaygın nedenlerini, evde neler yapabileceğinizi ve hangi durumlarda kliniğe başvurmanız gerektiğini ele alıyoruz.",
+  "body": [
+    {"type": "h2", "text": "Akut ve kronik kusma arasındaki fark"},
+    {"type": "p", "text": "Kusmayı değerlendirirken ilk ayrım, sorunun ne kadar sürdüğüdür. Akut kusma aniden başlar ve genellikle bir-iki gün içinde geçer; çoğu zaman geçici bir mide tahrişine, hızlı yemeye ya da basit bir hazımsızlığa bağlıdır. Kronik kusma ise haftalar boyunca, aralıklı ya da sürekli biçimde tekrarlayan kusmadır ve altta yatan bir sistemik hastalığın belirtisi olabilir."},
+    {"type": "p", "text": "Bu nedenle tek seferlik bir kusmayla, günlerce süren ya da haftada birkaç kez yinelenen kusmayı aynı kefeye koymamak gerekir. Kedinizin kusma sıklığını, zamanını ve kusmuğun içeriğini not almanız, veteriner hekiminizin doğru yönlendirme yapmasına büyük katkı sağlar. Kusmuğun yeni yenmiş mama mı, sindirilmiş gıda mı, köpüklü sıvı mı yoksa safra içeren sarımsı bir içerik mi olduğunu ayırt etmek bile tanı sürecinde önemli bir ipucudur."},
+    {"type": "h2", "text": "Tüy yumağı: ne zaman normal, ne zaman değil?"},
+    {"type": "p", "text": "Kediler tüylerini yalayarak temizlerken bir miktar tüy yutar ve bu tüyler bazen tüy yumağı olarak geri çıkarılır. Ayda bir-iki kez, silindir biçiminde tüy çıkarılması çoğu kedi için olağan kabul edilir, özellikle uzun tüylü ırklarda. Düzenli taramak ve dengeli beslenme bu durumu büyük ölçüde azaltır."},
+    {"type": "p", "text": "Ancak tüy yumağı çıkarma çabası sıklaşır, kedi öğürmesine rağmen bir şey çıkaramaz, iştahı düşer veya kabızlık eşlik ederse durum yalnızca tüyle açıklanamayabilir. Bu tabloda sindirim sisteminde bir tıkanma ya da motilite sorunu olabileceğinden değerlendirme önerilir. Haftada birden fazla tüy yumağı çıkaran ya da bu çabayla giderek halsizleşen kedilerde, sorunu basit bir bakım meselesi olarak görmek yerine veteriner hekime danışmak daha doğru bir yaklaşımdır."},
+    {"type": "h2", "text": "Kedilerde kusmanın sık görülen nedenleri"},
+    {"type": "p", "text": "Kusmanın ardında basit ve geçici sebepler olabileceği gibi, tıbbi takip gerektiren hastalıklar da yer alabilir. Aşağıdaki nedenler veteriner pratiğinde en sık karşılaşılanlardandır:"},
+    {"type": "ul", "items": [
+      "Hızlı yeme ve hemen ardından maması olduğu gibi geri çıkarma",
+      "Ani mama değişikliği veya alışık olunmayan bir gıda",
+      "Yutulan yabancı cisim (ip, oyuncak parçası, bitki yaprağı)",
+      "Bağırsak parazitleri",
+      "Kronik böbrek hastalığı ve hipertiroidi gibi yaşlı kedilerde sık görülen durumlar",
+      "İltihabi bağırsak hastalığı (IBD) ve besin duyarlılıkları",
+      "Zehirlenme (bazı bitkiler, temizlik ürünleri, ilaçlar)"
+    ]},
+    {"type": "p", "text": "Hızlı yeme ya da mama değişimi gibi nedenler genellikle basit önlemlerle düzelirken; böbrek hastalığı, hipertiroidi veya yabancı cisim gibi durumlar tıbbi müdahale gerektirir. Bu ayrımı yapmak için kusmaya eşlik eden diğer belirtileri gözlemlemek önemlidir. Örneğin yaşlı bir kedide kusmanın yanında aşırı su tüketimi, kilo kaybı ya da iştahta ani değişiklikler görülüyorsa, bu tablo böbrek veya tiroid kaynaklı bir sorunu düşündürebilir ve mutlaka kapsamlı bir muayene gerektirir."},
+    {"type": "h2", "text": "Acil müdahale gerektiren belirtiler"},
+    {"type": "p", "text": "Bazı durumlarda beklemek yerine vakit kaybetmeden veteriner hekime başvurmak gerekir. Aşağıdaki belirtilerden biri veya birkaçı varsa kedinizi en kısa sürede kliniğe getirmenizi öneririz:"},
+    {"type": "ul", "items": [
+      "Kusmukta kan ya da kahve telvesi görünümünde koyu içerik olması",
+      "Kısa süre içinde tekrarlayan, durmayan kusma",
+      "Belirgin halsizlik, güçsüzlük veya tepkisizlik",
+      "İştahsızlık ve su içmeyi reddetme",
+      "Karında şişlik, ağrı belirtisi veya sürekli öğürme",
+      "Erkek kedide idrar yapamama veya kuvvetli ıkınma ile çok az idrar çıkışı"
+    ]},
+    {"type": "callout", "text": "Erkek kedide idrar yapamama, kusmayla birlikte görülse bile başlı başına hayati bir acildir. İdrar yolu tıkanıklığı saatler içinde böbrekleri tehdit edebilir; lütfen gecikmeden kliniğe ulaşın."},
+    {"type": "h2", "text": "Evde ne yapmalı, ne yapmamalı?"},
+    {"type": "p", "text": "Tek seferlik, kedinizin keyfini bozmayan bir kusmada evde sakin biçimde gözlem yapabilirsiniz. Ancak yanlış uygulamalar durumu ağırlaştırabilir; bu nedenle yapılması ve yapılmaması gerekenleri ayırt etmek önemlidir:"},
+    {"type": "ul", "items": [
+      "Yapın: Temiz suyu erişilebilir tutun ve kedinizin su içip içmediğini izleyin.",
+      "Yapın: Birkaç saat boyunca durumu, kusma sıklığını ve genel canlılığını gözlemleyin.",
+      "Yapın: Kusmuğun rengini, içeriğini ve tüy/yabancı cisim olup olmadığını not edin.",
+      "Yapmayın: Veteriner hekime danışmadan kendi kararınızla ilaç ya da insan ilacı vermeyin.",
+      "Yapmayın: Zorla yemek yedirmeyin; iştahsızlık varsa baskı yapmayın.",
+      "Yapmayın: Belirtiler ağırlaşıyorsa 'kendiliğinden geçer' diyerek beklemeyin."
+    ]},
+    {"type": "p", "text": "Özetle, hafif ve geçici görünen kusmalarda kısa süreli gözlem makul olabilir; ancak tablo kötüleşiyor ya da yukarıdaki acil belirtiler ekleniyorsa zaman kaybetmeden profesyonel desteğe başvurmak en güvenli yoldur."},
+    {"type": "h2", "text": "Klinikte teşhis nasıl konur?"},
+    {"type": "p", "text": "Veteriner hekim önce ayrıntılı bir öykü alır ve fiziksel muayene yapar. Kusmanın süresi, sıklığı, beslenme alışkanlıkları ve eşlik eden belirtiler tanı için yol göstericidir. Klinik bulgulara göre tabloyu netleştirmek amacıyla çeşitli tetkikler istenebilir. Bu aşamada kedinizin yaşının, geçmiş hastalıklarının ve son dönemde ortamında değişen bir şey olup olmadığının paylaşılması süreci kolaylaştırır."},
+    {"type": "p", "text": "Sık başvurulan yöntemler arasında böbrek, karaciğer ve tiroid fonksiyonlarını değerlendiren kan tahlilleri; yabancı cisim ya da tıkanıklığı görüntülemek için röntgen; ve sindirim organlarını ayrıntılı incelemek için ultrason yer alır. Bu tetkikler, basit bir mide tahrişi ile tıbbi takip gerektiren bir hastalığı birbirinden ayırmaya yardımcı olur. Öveçler'deki kliniğimizde uzman veteriner hekim Öykü Yalçın bu değerlendirmeleri tek tek planlayarak yürütür."},
+    {"type": "h2", "text": "Kusmayı önlemek için pratik ipuçları"},
+    {"type": "p", "text": "Her kusma önlenemese de günlük bazı alışkanlıklar sıklığı belirgin biçimde azaltabilir. Düzenli bakım ve takip, hem tüy yumağı hem de sindirim kaynaklı kusmalarda fark yaratır:"},
+    {"type": "ul", "items": [
+      "Hızlı yiyen kediler için yavaşlatıcı mama kabı kullanın veya günlük porsiyonu küçük öğünlere bölün.",
+      "Mama değişikliğini birkaç gün boyunca kademeli olarak yapın.",
+      "Kedinizi düzenli olarak tarayarak yutulan tüy miktarını azaltın.",
+      "Parazit kontrolü ve aşı takvimini veteriner hekiminizle düzenli sürdürün.",
+      "Zehirli bitkileri ve küçük yutulabilir nesneleri kedinizin erişiminden uzak tutun.",
+      "Özellikle yaşlı kedilerde düzenli sağlık kontrollerini aksatmayın."
+    ]},
+    {"type": "p", "text": "Bu önlemler kusmanın tamamen önüne geçmeyebilir, ancak birçok geçici sebebi ortadan kaldırarak kedinizin yaşam kalitesini destekler ve olası ciddi durumların erken fark edilmesini kolaylaştırır. Özellikle yedi yaşını geçmiş kedilerde yılda en az bir kez yapılan rutin kontroller, böbrek ve tiroid kaynaklı sorunların henüz belirti vermeden saptanmasına yardımcı olur. Erken tanı, hem tedavi başarısını artırır hem de kedinizin konforunu uzun vadede korur."},
+    {"type": "p", "text": "Kedinizin kusması sürüyor, sıklaşıyor ya da yukarıdaki acil belirtilerden birini gösteriyorsa lütfen erteleme yapmayın. Çankaya, Öveçler'deki Pet Internal Veteriner Kliniği olarak muayene ve randevu için bize 0536 290 69 58 numaralı telefondan ulaşabilir, kedinizin sağlığını birlikte değerlendirebiliriz."}
+  ],
+  "faqs": [
+    {"q": "Kedim bir kez kustu ama keyfi yerinde, endişelenmeli miyim?", "a": "Tek seferlik, iştahı ve canlılığı bozulmayan bir kusma genellikle ciddi değildir. Birkaç saat gözlem yapabilir, temiz suya erişimini sağlayabilirsiniz. Kusma tekrarlar ya da halsizlik eklenirse veteriner hekime başvurun."},
+    {"q": "Kedimde tüy yumağı kusması normal mi?", "a": "Ayda bir-iki kez tüy yumağı çıkarılması, özellikle uzun tüylü kedilerde olağan kabul edilir. Ancak sık öğürme, bir şey çıkaramama, iştahsızlık veya kabızlık eşlik ediyorsa değerlendirme gerekir."},
+    {"q": "Kusan kedime ne yedirmeliyim?", "a": "İştahsızlık varken kediyi zorla beslememek gerekir. Beslenme planını ve uygun gıdayı veteriner hekiminizle birlikte belirlemek en doğrusudur; kendi kararınızla ilaç veya insan gıdası vermeyin."},
+    {"q": "Hangi durumda acilen veterinere gitmeliyim?", "a": "Kusmukta kan olması, durmayan tekrarlayan kusma, belirgin halsizlik, iştahsızlık ya da erkek kedide idrar yapamama acil belirtilerdir. Bu durumlarda gecikmeden kliniğe başvurun."},
+    {"q": "Kedimin kusmasının nedenini nasıl anlarsınız?", "a": "Veteriner hekim öykü ve fizik muayeneyle başlar; gerektiğinde kan tahlili, röntgen ve ultrason gibi tetkiklerle böbrek hastalığı, hipertiroidi, yabancı cisim ya da bağırsak sorunlarını ayırt eder."},
+    {"q": "Kusmayı önlemek için ne yapabilirim?", "a": "Hızlı yiyen kedilerde yavaşlatıcı kap kullanmak, mama değişimini kademeli yapmak, düzenli taramak, parazit kontrolünü sürdürmek ve zehirli bitkileri uzak tutmak kusma sıklığını azaltır."}
+  ]
+}
