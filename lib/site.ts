@@ -18,14 +18,12 @@ export const site = {
     district: "06460 Çankaya / Ankara",
     full: "Öveçler, 1335. Sk. 8/B, 06460 Çankaya/Ankara",
   },
-  // Keyless Google Maps embed for the clinic address
+  // Exact clinic coordinates → single pin (keyless Google Maps embed)
+  geo: { lat: 39.8925626, lng: 32.8300456 },
   mapsEmbed:
-    "https://www.google.com/maps?q=" +
-    encodeURIComponent("Öveçler 1335. Sk. 8/B, 06460 Çankaya Ankara") +
-    "&z=15&output=embed",
+    "https://maps.google.com/maps?q=39.8925626,32.8300456&z=16&output=embed",
   mapsLink:
-    "https://www.google.com/maps/search/?api=1&query=" +
-    encodeURIComponent("Öveçler 1335. Sk. 8/B, 06460 Çankaya Ankara"),
+    "https://www.google.com/maps/place/Pet+%C4%B0nternal+Veteriner+Klini%C4%9Fi/@39.8925626,32.8300456,17z/data=!4m6!3m5!1s0x14d3456948de1403:0xe35bbafbc16bf703!8m2!3d39.8925626!4d32.8300456",
   hours: [
     { day: "Hafta içi", time: "7/24 Açık" },
     { day: "Hafta sonu", time: "7/24 Açık" },

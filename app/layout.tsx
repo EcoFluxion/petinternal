@@ -84,6 +84,12 @@ const jsonLd = {
     postalCode: "06460",
     addressCountry: "TR",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 39.8925626,
+    longitude: 32.8300456,
+  },
+  hasMap: site.mapsLink,
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
