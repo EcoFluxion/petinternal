@@ -15,10 +15,10 @@ export function About() {
       <div className="container-px grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
         {/* Photo */}
         <div className="relative mx-auto w-full max-w-md lg:mx-0">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] bg-cream shadow-lift ring-1 ring-black/5">
+          <div className="relative aspect-square overflow-hidden rounded-[1.75rem] bg-cream shadow-lift ring-1 ring-black/5">
             <Image
-              src="/images/about-care.jpg"
-              alt="Yumuşak bir battaniyede huzurla dinlenen golden retriever yavrusu"
+              src="/images/oyku.png"
+              alt="Uzman Veteriner Hekim Öykü Yalçın"
               fill
               sizes="(max-width: 1024px) 90vw, 40vw"
               className="object-cover"

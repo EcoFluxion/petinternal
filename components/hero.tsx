@@ -60,8 +60,8 @@ export function Hero() {
           <div className="relative mx-auto max-w-md lg:ml-auto lg:mr-0">
             <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] bg-cream shadow-lift ring-1 ring-black/5">
               <Image
-                src="/images/hero-pet-care.jpg"
-                alt="Sahibinin kucağında huzurla dinlenen bir kedi"
+                src="/images/about-care.jpg"
+                alt="Yumuşak bir battaniyede dinlenen golden retriever yavrusu"
                 fill
                 priority
                 sizes="(max-width: 1024px) 90vw, 38vw"
