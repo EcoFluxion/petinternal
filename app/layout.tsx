@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { WhatsAppFab } from "@/components/whatsapp-fab";
+import { CookieConsent } from "@/components/cookie-consent";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { site } from "@/lib/site";
@@ -135,6 +136,7 @@ export default function RootLayout({
           {children}
           <SiteFooter />
           <WhatsAppFab />
+          <CookieConsent />
         </ThemeProvider>
         <script
           type="application/ld+json"
