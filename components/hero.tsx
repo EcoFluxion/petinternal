@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { MapPin, PawPrint, Star } from "lucide-react";
+import { MapPin, PawPrint, Phone, Star } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button";
 import { WhatsAppIcon } from "@/components/icons";
 import { site } from "@/lib/site";
@@ -30,13 +30,22 @@ export function Hero() {
             bütünsel sağlık hizmeti.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
             <ButtonLink href="/#iletisim" variant="primary" size="lg">
               Randevu Al
             </ButtonLink>
             <ButtonLink href={site.whatsapp} variant="secondary" size="lg">
               <WhatsAppIcon className="h-[1.15rem] w-[1.15rem]" />
               WhatsApp'tan Yaz
+            </ButtonLink>
+            <ButtonLink
+              href={site.phoneHref}
+              variant="secondary"
+              size="lg"
+              external={false}
+            >
+              <Phone className="h-[1.15rem] w-[1.15rem]" aria-hidden="true" />
+              Bizi Arayın
             </ButtonLink>
           </div>
 
