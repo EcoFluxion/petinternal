@@ -3,9 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { ArrowLeft, Check, Clock3, Info, RefreshCw, Stethoscope } from "lucide-react";
-import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
 import { CtaBand } from "@/components/cta-band";
+import { FaqAccordion } from "@/components/faq";
 import { blogPosts, getPost, site, type BlogPost } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -114,7 +113,6 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
   return (
     <>
-      <SiteHeader />
       <main id="main">
         <article className="bg-paper py-12 sm:py-16">
           <div className="container-px">
@@ -213,19 +211,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                   <h2 className="font-display text-2xl font-semibold text-ink">
                     Sık Sorulan Sorular
                   </h2>
-                  <div className="mt-4 divide-y divide-hairline rounded-2xl border border-hairline bg-surface px-5">
-                    {post.faqs.map((f, i) => (
-                      <details key={i} className="group py-4">
-                        <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium text-ink marker:content-none">
-                          {f.q}
-                          <span className="text-brand transition-transform duration-200 ease-gentle group-open:rotate-45">
-                            +
-                          </span>
-                        </summary>
-                        <p className="mt-3 leading-relaxed text-muted">{f.a}</p>
-                      </details>
-                    ))}
-                  </div>
+                  <FaqAccordion items={post.faqs} />
                 </section>
               )}
 
@@ -270,7 +256,6 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
         <CtaBand />
       </main>
-      <SiteFooter />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

@@ -2,8 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ArrowLeft, Clock3 } from "lucide-react";
-import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
 import { CtaBand } from "@/components/cta-band";
 import { blogPosts } from "@/lib/site";
 
@@ -16,10 +14,8 @@ export const metadata: Metadata = {
 
 export default function BlogIndexPage() {
   return (
-    <>
-      <SiteHeader />
-      <main id="main">
-        <section className="bg-paper py-14 sm:py-20">
+    <main id="main">
+      <section className="bg-paper py-14 sm:py-20">
           <div className="container-px">
             <Link
               href="/"
@@ -82,7 +78,5 @@ export default function BlogIndexPage() {
 
         <CtaBand />
       </main>
-      <SiteFooter />
-    </>
   );
 }
