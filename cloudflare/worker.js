@@ -76,6 +76,12 @@ export default {
       return { json: JSON.parse(base64ToUtf8(d.content)), sha: d.sha };
     }
 
+    async function getSha(path) {
+      const r = await fetch(`${contentsUrl(path)}?ref=${branch}`, { headers: ghHeaders });
+      if (r.status !== 200) return null;
+      return (await r.json()).sha;
+    }
+
     const action = body.action || "publish";
 
     // ── LIST ────────────────────────────────────────────────────────
@@ -141,6 +147,22 @@ export default {
         return json({ error: "Görsel yüklenemedi", detail: err.slice(0, 300) }, 502, env);
       }
       return json({ ok: true, url: `/blog-images/${name}` }, 200, env);
+    }
+
+    // ── DELETE IMAGE ────────────────────────────────────────────────
+    if (action === "deleteImage") {
+      const name = String(body.url || "").replace(/^\/+/, "").replace(/^blog-images\//, "");
+      if (!name) return json({ error: "URL yok" }, 400, env);
+      const path = `public/blog-images/${name}`;
+      const sha = await getSha(path);
+      if (!sha) return json({ error: "Görsel bulunamadı" }, 404, env);
+      const del = await fetch(contentsUrl(path), {
+        method: "DELETE",
+        headers: { ...ghHeaders, "Content-Type": "application/json" },
+        body: JSON.stringify({ message: `Görsel sil: ${name}`, sha, branch }),
+      });
+      if (!del.ok) return json({ error: "Görsel silinemedi" }, 502, env);
+      return json({ ok: true }, 200, env);
     }
 
     // ── PUBLISH / UPDATE ────────────────────────────────────────────

@@ -27,6 +27,9 @@ function slugify(input: string): string {
 function esc(s: string): string {
   return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
+function escapeRegex(s: string): string {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
 function blocksToHtml(blocks: Block[] | undefined): string {
   return (blocks ?? []).map((b) => {
     if (b.type === "h2") return `<h2>${esc(b.text)}</h2>`;
@@ -202,6 +205,19 @@ export function AdminEditor() {
     }
   }
 
+  async function removeImage(url: string) {
+    // remove the <img …src="url"…> tag from the content
+    const re = new RegExp(`\\s*<img[^>]*src=["']${escapeRegex(url)}["'][^>]*>\\s*`, "gi");
+    setContent((c) => c.replace(re, "\n"));
+    setUploaded((u) => u.filter((i) => i.url !== url));
+    try {
+      await api({ action: "deleteImage", url }); // delete the file from GitHub
+      setNotice({ type: "ok", text: "Görsel kaldırıldı." });
+    } catch {
+      /* Worker güncel değilse dosya kalır; etiket yine de metinden silindi */
+    }
+  }
+
   // ── Login ───────────────────────────────────────────────────────────
   if (stage === "login") {
     return (
@@ -374,6 +390,13 @@ export function AdminEditor() {
                       className="shrink-0 rounded-full px-2.5 py-1 text-xs font-medium text-ink ring-1 ring-hairline transition-colors hover:bg-surface"
                     >
                       Kopyala
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => removeImage(img.url)}
+                      className="shrink-0 rounded-full px-2.5 py-1 text-xs font-medium text-red-600 ring-1 ring-red-200 transition-colors hover:bg-red-50 dark:text-red-400 dark:ring-red-900/50 dark:hover:bg-red-950/30"
+                    >
+                      Sil
                     </button>
                   </li>
                 ))}
