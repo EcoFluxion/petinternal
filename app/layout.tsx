@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: `%s · ${site.shortName}`,
   },
   description:
-    "Çankaya Öveçler'de modern ve şefkatli veteriner hizmeti. Genel muayene, aşılama, kısırlaştırma, diş sağlığı, laboratuvar ve 7/24 acil destek. Randevu: 0536 290 69 58.",
+    "Çankaya Öveçler'de modern ve şefkatli veteriner kliniği. Muayene, aşı, cerrahi ve 7/24 acil bakım. Hemen arayın: 0536 290 69 58 ya da WhatsApp'tan yazın.",
   keywords: [
     "veteriner Çankaya",
     "veteriner Ankara",
@@ -44,14 +44,14 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: `${site.name} · Çankaya, Ankara`,
     description:
-      "Modern donanım, sıcak bir yaklaşım. Çankaya'da kedi, köpek ve tüm patili dostlarınız için bütünsel veteriner hizmeti.",
+      "Çankaya Öveçler'de modern ve şefkatli veteriner kliniği. Muayene, aşı, cerrahi ve 7/24 acil bakım. Hemen arayın: 0536 290 69 58 ya da WhatsApp'tan yazın.",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: site.name }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.name} · Çankaya, Ankara`,
     description:
-      "Çankaya Öveçler'de modern ve şefkatli veteriner hizmeti. 7/24 acil destek.",
+      "Çankaya Öveçler'de şefkatli veteriner kliniği. 7/24 acil. Arayın: 0536 290 69 58 ya da WhatsApp'tan yazın.",
     images: ["/og-image.png"],
   },
   icons: {
