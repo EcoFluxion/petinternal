@@ -1,11 +1,12 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { ArrowLeft, Check, Clock3, Info, RefreshCw, Stethoscope } from "lucide-react";
 import { CtaBand } from "@/components/cta-band";
+import { CoverImage } from "@/components/cover-image";
 import { FaqAccordion } from "@/components/faq";
-import { blogPosts, getPost, site, type BlogPost } from "@/lib/site";
+import { site } from "@/lib/site";
+import { blogPosts, getPost, type BlogPost } from "@/lib/posts";
 
 export function generateStaticParams() {
   return blogPosts.map((p) => ({ slug: p.slug }));
@@ -77,7 +78,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     inLanguage: "tr-TR",
     author: {
       "@type": "Person",
-      name: "Öykü Yalçın",
+      name: post.author ?? "Öykü Yalçın",
       jobTitle: "Uzman Veteriner Hekim",
     },
     publisher: {
@@ -147,13 +148,11 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
             <div className="mx-auto mt-8 max-w-4xl">
               <div className="relative aspect-[16/9] overflow-hidden rounded-2xl bg-cream shadow-card ring-1 ring-black/5">
-                <Image
+                <CoverImage
                   src={post.image}
                   alt={post.imageAlt}
-                  fill
                   priority
-                  sizes="(max-width: 1024px) 92vw, 56rem"
-                  className="object-cover"
+                  className="absolute inset-0 h-full w-full object-cover"
                 />
               </div>
             </div>
@@ -222,7 +221,9 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 </span>
                 <p className="text-sm leading-relaxed text-muted">
                   Bu yazı, uzman veteriner hekimimiz{" "}
-                  <strong className="font-semibold text-ink">Öykü Yalçın</strong>{" "}
+                  <strong className="font-semibold text-ink">
+                    {post.author ?? "Öykü Yalçın"}
+                  </strong>{" "}
                   tarafından hazırlanmıştır. İçerik genel bilgilendirme amaçlıdır;
                   dostunuza özel durumlar için lütfen{" "}
                   <a href={site.phoneHref} className="font-medium text-brand hover:text-brand-700">

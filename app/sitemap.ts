@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { blogPosts } from "@/lib/site";
+import { blogPosts } from "@/lib/posts";
 
 const BASE = "https://petinternal.com";
 

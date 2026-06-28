@@ -2,7 +2,7 @@
 
 import { useId, useState } from "react";
 import { Plus } from "lucide-react";
-import type { FAQ } from "@/lib/site";
+import type { FAQ } from "@/lib/posts";
 
 /**
  * Sliding FAQ accordion — open/close animates height + opacity (grid-rows trick),

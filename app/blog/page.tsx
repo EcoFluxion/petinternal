@@ -1,9 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ArrowLeft, Clock3 } from "lucide-react";
 import { CtaBand } from "@/components/cta-band";
-import { blogPosts } from "@/lib/site";
+import { CoverImage } from "@/components/cover-image";
+import { blogPosts } from "@/lib/posts";
 
 export const metadata: Metadata = {
   title: "Blog & Rehber",
@@ -39,12 +39,10 @@ export default function BlogIndexPage() {
                   className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-hairline bg-surface shadow-soft transition-all duration-200 ease-gentle hover:-translate-y-1 hover:shadow-card"
                 >
                   <div className="relative aspect-[3/2] overflow-hidden bg-cream">
-                    <Image
+                    <CoverImage
                       src={post.image}
                       alt={post.imageAlt}
-                      fill
-                      sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
-                      className="object-cover transition-transform duration-300 ease-gentle group-hover:scale-[1.04]"
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 ease-gentle group-hover:scale-[1.04]"
                     />
                     <span className="absolute left-3 top-3 rounded-full bg-paper/90 px-3 py-1 text-xs font-semibold text-brand-700 shadow-soft backdrop-blur-sm dark:text-brand-200">
                       {post.category}

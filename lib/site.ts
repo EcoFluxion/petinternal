@@ -1,10 +1,5 @@
 // ── Single source of truth for clinic content (Turkish) ──────────────
-import yazPost from "./posts/yaz-sicaginda-pati-bakimi.json";
-import disPost from "./posts/dis-tasi-ve-agiz-sagligi.json";
-import kediPost from "./posts/kedilerde-kusma.json";
-import kopekPost from "./posts/kopek-asi-takvimi.json";
-import yavruPost from "./posts/yavru-kedi-beslenmesi.json";
-import kisirPost from "./posts/kisirlastirma-rehberi.json";
+// Blog post types + loader now live in lib/posts.ts
 
 export const site = {
   name: "Pet Internal Veteriner Kliniği",
@@ -41,45 +36,6 @@ export const navLinks = [
   { label: "Blog", href: "/blog" },
   { label: "İletişim", href: "/#iletisim" },
 ] as const;
-
-export type BlogBlock =
-  | { type: "h2"; text: string }
-  | { type: "p"; text: string }
-  | { type: "ul"; items: string[] }
-  | { type: "callout"; text: string };
-
-export type FAQ = { q: string; a: string };
-
-export type BlogPost = {
-  slug: string;
-  title: string;
-  category: string;
-  excerpt: string;
-  image: string;
-  imageAlt: string;
-  readTime: string;
-  date: string;
-  dateISO: string;
-  updatedISO: string;
-  keywords: string[];
-  intro: string;
-  body: BlogBlock[];
-  faqs: FAQ[];
-};
-
-// Long-form articles live as JSON in lib/posts/*.json (ordered freshest first).
-export const blogPosts: BlogPost[] = [
-  yazPost,
-  disPost,
-  kediPost,
-  kopekPost,
-  yavruPost,
-  kisirPost,
-] as unknown as BlogPost[];
-
-export function getPost(slug: string): BlogPost | undefined {
-  return blogPosts.find((p) => p.slug === slug);
-}
 
 export type Testimonial = {
   quote: string;
