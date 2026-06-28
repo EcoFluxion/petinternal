@@ -2,7 +2,7 @@
 
 > Çankaya, Ankara (Öveçler) bölgesinde hizmet veren modern ve şefkatli bir veteriner kliniği. Kedi, köpek ve tüm patili dostlar için koruyucu hekimlik, cerrahi, diş sağlığı, laboratuvar/görüntüleme ve 7/24 acil veteriner desteği sunar.
 
-Pet Internal Veteriner Kliniği, uzman veteriner hekim Öykü Yalçın ve ekibi tarafından yürütülür. Modern tıbbi donanımı sıcak, sabırlı ve şeffaf bir yaklaşımla birleştirir. Web sitesi: https://petinternal.com
+Pet Internal Veteriner Kliniği, uzman veteriner hekim Öykü Yalçın ve ekibi tarafından yürütülür. Modern tıbbi donanımı sıcak, sabırlı ve şeffaf bir yaklaşımla birleştirir. Web sitesi: https://www.petinternal.com
 
 ## Hizmetler
 - Genel Muayene & Check-up — düzenli kontrol ve erken teşhis
@@ -16,12 +16,12 @@ Pet Internal Veteriner Kliniği, uzman veteriner hekim Öykü Yalçın ve ekibi 
 - Beslenme Danışmanlığı — yaşa ve ırka özel beslenme planları
 
 ## Blog & Rehber
-- [Yaz sıcağında pati bakımı](https://petinternal.com/blog/yaz-sicaginda-pati-bakimi): Sıcak günlerde ısı çarpması ve dehidrasyondan korunma yolları.
-- [Diş taşı ve ağız sağlığı](https://petinternal.com/blog/dis-tasi-ve-agiz-sagligi): Ağız sağlığı belirtileri, önemi ve korunma.
-- [Kedilerde kusma: ne zaman veterinerinize gitmelisiniz?](https://petinternal.com/blog/kedilerde-kusma): Normal ve acil durumların ayırt edilmesi.
-- [Köpeğinizin aşı takvimi](https://petinternal.com/blog/kopek-asi-takvimi): Yavruluktan yetişkinliğe aşı zamanlaması.
-- [Yavru kedi beslenmesi rehberi](https://petinternal.com/blog/yavru-kedi-beslenmesi): Mama seçimi ve öğün düzeni.
-- [Kısırlaştırma hakkında bilmeniz gerekenler](https://petinternal.com/blog/kisirlastirma-rehberi): Doğru yaş, süreç ve sonrası bakım.
+- [Yaz sıcağında pati bakımı](https://www.petinternal.com/blog/yaz-sicaginda-pati-bakimi): Sıcak günlerde ısı çarpması ve dehidrasyondan korunma yolları.
+- [Diş taşı ve ağız sağlığı](https://www.petinternal.com/blog/dis-tasi-ve-agiz-sagligi): Ağız sağlığı belirtileri, önemi ve korunma.
+- [Kedilerde kusma: ne zaman veterinerinize gitmelisiniz?](https://www.petinternal.com/blog/kedilerde-kusma): Normal ve acil durumların ayırt edilmesi.
+- [Köpeğinizin aşı takvimi](https://www.petinternal.com/blog/kopek-asi-takvimi): Yavruluktan yetişkinliğe aşı zamanlaması.
+- [Yavru kedi beslenmesi rehberi](https://www.petinternal.com/blog/yavru-kedi-beslenmesi): Mama seçimi ve öğün düzeni.
+- [Kısırlaştırma hakkında bilmeniz gerekenler](https://www.petinternal.com/blog/kisirlastirma-rehberi): Doğru yaş, süreç ve sonrası bakım.
 
 ## Çalışma Saatleri
 - Her gün (hafta içi ve hafta sonu): 7/24 açık

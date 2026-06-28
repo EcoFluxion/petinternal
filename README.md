@@ -1,8 +1,10 @@
 # Pet Internal Veteriner Kliniği
 
-Production marketing landing page for a neighborhood veterinary clinic in
-**Öveçler, Çankaya / Ankara**. Warm, editorial, and bilingual-ready — built to feel
-like an agency site for a trusted local vet, not a template.
+Çankaya Öveçler'de modern ve şefkatli veteriner kliniği **Pet Internal**'ın
+resmî web sitesi. Muayene, aşı, cerrahi ve 7/24 acil bakım hizmetleri.
+
+> _Geliştirici notu:_ Next.js 14 + TypeScript ile yapılmış sıcak, editöryel ve
+> iki dile hazır bir tanıtım sitesi.
 
 > Brand palette is derived from the clinic logo: a calm **sage-forest green** accent
 > on **warm cream** backgrounds, with a genuinely designed **warm dark mode**.

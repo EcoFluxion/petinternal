@@ -73,7 +73,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     "@type": "BlogPosting",
     headline: post.title,
     description: post.excerpt,
-    image: `https://petinternal.com${post.image}`,
+    image: `https://www.petinternal.com${post.image}`,
     datePublished: post.dateISO,
     dateModified: post.updatedISO,
     wordCount: wordCount(post),
@@ -90,10 +90,10 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       name: site.name,
       logo: {
         "@type": "ImageObject",
-        url: "https://petinternal.com/logo-icon.png",
+        url: "https://www.petinternal.com/logo-icon.png",
       },
     },
-    mainEntityOfPage: `https://petinternal.com/blog/${post.slug}`,
+    mainEntityOfPage: `https://www.petinternal.com/blog/${post.slug}`,
   };
 
   const faqLd = {
@@ -110,9 +110,9 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Ana Sayfa", item: "https://petinternal.com" },
-      { "@type": "ListItem", position: 2, name: "Blog", item: "https://petinternal.com/blog" },
-      { "@type": "ListItem", position: 3, name: post.title, item: `https://petinternal.com/blog/${post.slug}` },
+      { "@type": "ListItem", position: 1, name: "Ana Sayfa", item: "https://www.petinternal.com" },
+      { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.petinternal.com/blog" },
+      { "@type": "ListItem", position: 3, name: post.title, item: `https://www.petinternal.com/blog/${post.slug}` },
     ],
   };
 

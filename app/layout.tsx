@@ -21,7 +21,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://petinternal.com"),
+  metadataBase: new URL("https://www.petinternal.com"),
   title: {
     default: `${site.name} · Çankaya, Ankara`,
     template: `%s · ${site.shortName}`,
@@ -72,9 +72,9 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "VeterinaryCare",
   name: site.name,
-  image: "https://petinternal.com/og-image.png",
-  "@id": "https://petinternal.com",
-  url: "https://petinternal.com",
+  image: "https://www.petinternal.com/og-image.png",
+  "@id": "https://www.petinternal.com",
+  url: "https://www.petinternal.com",
   telephone: "+905362906958",
   email: site.email,
   address: {
