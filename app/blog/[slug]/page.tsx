@@ -19,8 +19,12 @@ const trFull = new Intl.DateTimeFormat("tr-TR", {
 });
 
 function wordCount(post: BlogPost): number {
+  if (post.contentHtml) {
+    const text = post.contentHtml.replace(/<[^>]+>/g, " ");
+    return text.trim().split(/\s+/).filter(Boolean).length;
+  }
   const parts: string[] = [post.intro];
-  for (const b of post.body) {
+  for (const b of post.body ?? []) {
     if (b.type === "ul") parts.push(...b.items);
     else parts.push(b.text);
   }
@@ -160,7 +164,14 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             <div className="mx-auto mt-10 max-w-3xl">
               <p className="text-lg leading-relaxed text-ink/90">{post.intro}</p>
 
-              {post.body.map((b, i) => {
+              {post.contentHtml ? (
+                <div
+                  className="post-html mt-6"
+                  dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+                />
+              ) : null}
+
+              {(post.body ?? []).map((b, i) => {
                 if (b.type === "h2") {
                   return (
                     <h2

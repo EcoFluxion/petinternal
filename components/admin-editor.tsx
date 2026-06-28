@@ -1,8 +1,8 @@
 "use client";
 
-import { useMemo, useState, type FormEvent } from "react";
+import { useMemo, useState, type ChangeEvent, type FormEvent } from "react";
 import {
-  ArrowLeft, CheckCircle2, Loader2, Lock, Pencil, Plus, Send, Trash2,
+  ArrowLeft, CheckCircle2, ImagePlus, Loader2, Lock, Pencil, Plus, Send, Trash2,
 } from "lucide-react";
 import { PUBLISH_ENDPOINT, SITE_URL } from "@/lib/admin-config";
 
@@ -24,12 +24,15 @@ function slugify(input: string): string {
     .replace(/\s+/g, "-").replace(/-+/g, "-").replace(/^-|-$/g, "");
 }
 
-function blocksToText(blocks: Block[] | undefined): string {
+function esc(s: string): string {
+  return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+function blocksToHtml(blocks: Block[] | undefined): string {
   return (blocks ?? []).map((b) => {
-    if (b.type === "h2") return "## " + b.text;
-    if (b.type === "ul") return b.items.map((i) => "- " + i).join("\n");
-    if (b.type === "callout") return "> " + b.text;
-    return b.text ?? "";
+    if (b.type === "h2") return `<h2>${esc(b.text)}</h2>`;
+    if (b.type === "ul") return `<ul>\n${b.items.map((i) => `  <li>${esc(i)}</li>`).join("\n")}\n</ul>`;
+    if (b.type === "callout") return `<blockquote>${esc(b.text)}</blockquote>`;
+    return `<p>${esc(b.text)}</p>`;
   }).join("\n\n");
 }
 
@@ -62,6 +65,7 @@ export function AdminEditor() {
   const [date, setDate] = useState(todayISO());
   const [published, setPublished] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
 
   const effectiveSlug = useMemo(
     () => (editingExisting || slugTouched ? slug : slugify(title)),
@@ -114,7 +118,7 @@ export function AdminEditor() {
       setTitle(p.title ?? ""); setSlug(p.slug ?? s); setSlugTouched(true);
       setCategory(p.category ?? "Genel"); setCover(p.image ?? "");
       setAuthor(p.author ?? ""); setExcerpt(p.excerpt ?? "");
-      setContent(blocksToText(p.body)); setTags((p.keywords ?? []).join(", "));
+      setContent(p.contentHtml ?? blocksToHtml(p.body)); setTags((p.keywords ?? []).join(", "));
       setDate(p.dateISO ?? todayISO()); setPublished(p.published !== false);
       setStage("editor");
     } catch (e) {
@@ -146,7 +150,7 @@ export function AdminEditor() {
         action: "publish",
         title: title.trim(), slug: effectiveSlug, category: category.trim() || "Genel",
         cover: cover.trim(), author: author.trim(), excerpt: excerpt.trim(),
-        content, date,
+        html: content, date,
         tags: tags.split(",").map((t) => t.trim()).filter(Boolean),
         published,
       });
@@ -156,6 +160,29 @@ export function AdminEditor() {
       setNotice({ type: "error", text: err instanceof Error ? err.message : "Bir hata oluştu." });
     } finally {
       setSaving(false);
+    }
+  }
+
+  async function handleUpload(e: ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    setNotice(null);
+    try {
+      const dataUrl = await new Promise<string>((res, rej) => {
+        const r = new FileReader();
+        r.onload = () => res(String(r.result));
+        r.onerror = () => rej(new Error("Dosya okunamadı"));
+        r.readAsDataURL(file);
+      });
+      const data = await api({ action: "upload", filename: file.name, data: dataUrl });
+      setContent((c) => `${c}\n<img src="${data.url}" alt="" />\n`);
+      setNotice({ type: "ok", text: `Görsel eklendi (${data.url}). Site ~1–2 dk içinde yayına alır.` });
+    } catch (err) {
+      setNotice({ type: "error", text: err instanceof Error ? err.message : "Görsel yüklenemedi" });
+    } finally {
+      setUploading(false);
+      e.target.value = "";
     }
   }
 
@@ -295,9 +322,24 @@ export function AdminEditor() {
         </div>
 
         <div>
-          <label htmlFor="content" className={label}>İçerik *</label>
-          <textarea id="content" value={content} onChange={(e) => setContent(e.target.value)} rows={14} required className={`${field} resize-y font-mono text-sm`} placeholder={"Paragrafları boş satırla ayırın.\n\n## Alt başlık\n\n- Madde\n- Madde\n\n> Önemli uyarı kutusu"} />
-          <p className="mt-1 text-xs text-muted">boş satır = paragraf · “## ” = alt başlık · “- ” = madde · “&gt; ” = uyarı kutusu</p>
+          <div className="mb-1.5 flex items-center justify-between gap-3">
+            <label htmlFor="content" className="block text-sm font-medium text-ink">
+              İçerik (HTML) *
+            </label>
+            <label className="inline-flex cursor-pointer items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium text-brand ring-1 ring-brand-200 transition-colors hover:bg-brand-50 dark:ring-brand-700 dark:hover:bg-brand-900/30">
+              {uploading ? (
+                <Loader2 className="h-3.5 w-3.5 animate-spin" />
+              ) : (
+                <ImagePlus className="h-3.5 w-3.5" />
+              )}
+              Görsel Yükle
+              <input type="file" accept="image/*" className="hidden" onChange={handleUpload} disabled={uploading} />
+            </label>
+          </div>
+          <textarea id="content" value={content} onChange={(e) => setContent(e.target.value)} rows={16} required className={`${field} resize-y font-mono text-sm`} placeholder={"<p>Buraya yazınızı yazın.</p>\n\n<h2>Alt başlık</h2>\n<p>Paragraf… <strong>kalın</strong>, <a href=\"https://...\">link</a>.</p>\n\n<ul>\n  <li>Madde</li>\n</ul>"} />
+          <p className="mt-1 text-xs text-muted">
+            HTML kullanın: &lt;p&gt;paragraf&lt;/p&gt; · &lt;h2&gt;başlık&lt;/h2&gt; · &lt;strong&gt;kalın&lt;/strong&gt; · &lt;a href&gt;link&lt;/a&gt;. Fotoğraf için <strong>Görsel Yükle</strong> → &lt;img&gt; otomatik eklenir.
+          </p>
         </div>
 
         <div className="grid gap-5 sm:grid-cols-2">

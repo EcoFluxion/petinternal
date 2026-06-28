@@ -24,7 +24,8 @@ export type BlogPost = {
   updatedISO: string;
   keywords: string[];
   intro: string;
-  body: BlogBlock[];
+  body?: BlogBlock[]; // legacy/structured posts
+  contentHtml?: string; // HTML posts written via /admin
   faqs: FAQ[];
   author?: string;
   published?: boolean;

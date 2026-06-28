@@ -21,24 +21,6 @@ function slugify(s) {
     .replace(/\s+/g, "-").replace(/-+/g, "-").replace(/^-|-$/g, "");
 }
 
-function toBlocks(text) {
-  const lines = String(text).replace(/\r\n/g, "\n").split("\n");
-  const blocks = [];
-  let para = [], list = [];
-  const flushPara = () => { if (para.length) { blocks.push({ type: "p", text: para.join(" ").trim() }); para = []; } };
-  const flushList = () => { if (list.length) { blocks.push({ type: "ul", items: list.slice() }); list = []; } };
-  for (const raw of lines) {
-    const line = raw.trim();
-    if (!line) { flushList(); flushPara(); continue; }
-    if (line.startsWith("## ")) { flushList(); flushPara(); blocks.push({ type: "h2", text: line.slice(3).trim() }); continue; }
-    if (line.startsWith("> ")) { flushList(); flushPara(); blocks.push({ type: "callout", text: line.slice(2).trim() }); continue; }
-    if (line.startsWith("- ")) { flushPara(); list.push(line.slice(2).trim()); continue; }
-    flushList(); para.push(line);
-  }
-  flushList(); flushPara();
-  return blocks;
-}
-
 function utf8ToBase64(str) {
   const bytes = new TextEncoder().encode(str);
   let bin = "";
@@ -140,21 +122,41 @@ export default {
       return json({ ok: true, slug }, 200, env);
     }
 
+    // ── UPLOAD IMAGE ────────────────────────────────────────────────
+    if (action === "upload") {
+      const raw = body.data || "";
+      const b64 = raw.includes(",") ? raw.slice(raw.indexOf(",") + 1) : raw;
+      if (!b64) return json({ error: "Dosya yok" }, 400, env);
+      const safe = (body.filename || "gorsel")
+        .toLowerCase().replace(/[^a-z0-9.]+/g, "-").replace(/^-+|-+$/g, "") || "gorsel";
+      const name = `${Date.now()}-${safe}`;
+      const path = `public/blog-images/${name}`;
+      const put = await fetch(contentsUrl(path), {
+        method: "PUT",
+        headers: { ...ghHeaders, "Content-Type": "application/json" },
+        body: JSON.stringify({ message: `Görsel: ${name}`, content: b64, branch }),
+      });
+      if (!put.ok) {
+        const err = await put.text().catch(() => "");
+        return json({ error: "Görsel yüklenemedi", detail: err.slice(0, 300) }, 502, env);
+      }
+      return json({ ok: true, url: `/blog-images/${name}` }, 200, env);
+    }
+
     // ── PUBLISH / UPDATE ────────────────────────────────────────────
     const title = (body.title || "").trim();
-    const content = body.content || "";
+    const html = (body.html || "").trim();
     const slug = slugify(body.slug || title);
-    if (!title || !slug || !content.trim()) {
+    if (!title || !slug || !html) {
       return json({ error: "Başlık, slug ve içerik zorunludur" }, 400, env);
     }
 
     const path = `lib/posts/${slug}.json`;
     const existing = await getFile(path); // null if new
 
-    const blocks = toBlocks(content);
-    const firstPara = (blocks.find((b) => b.type === "p")?.text) || title;
-    const excerpt = (body.excerpt || "").trim() || (firstPara.length > 157 ? firstPara.slice(0, 157) + "…" : firstPara);
-    const words = content.trim().split(/\s+/).filter(Boolean).length;
+    const plain = html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+    const excerpt = (body.excerpt || "").trim() || (plain.length > 157 ? plain.slice(0, 157) + "…" : plain);
+    const words = plain.split(/\s+/).filter(Boolean).length;
     const readTime = Math.max(1, Math.round(words / 200)) + " dk okuma";
 
     const today = new Date().toISOString().slice(0, 10);
@@ -175,7 +177,7 @@ export default {
       updatedISO: today,
       keywords: Array.isArray(body.tags) ? body.tags.filter(Boolean) : [],
       intro: excerpt,
-      body: blocks,
+      contentHtml: html,
       faqs: existing?.json.faqs || [], // preserve FAQs when editing
       published: body.published !== false,
     };

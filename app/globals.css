@@ -98,3 +98,46 @@
     transform: none;
   }
 }
+
+/* Rich HTML blog content (written via /admin) */
+@layer components {
+  .post-html {
+    @apply leading-relaxed text-muted;
+  }
+  .post-html h2 {
+    @apply mt-9 font-display text-xl font-semibold text-ink sm:text-2xl;
+  }
+  .post-html h3 {
+    @apply mt-7 font-display text-lg font-semibold text-ink;
+  }
+  .post-html p {
+    @apply mt-4 leading-relaxed;
+  }
+  .post-html a {
+    @apply font-medium text-brand underline underline-offset-2 hover:text-brand-700;
+  }
+  .post-html strong {
+    @apply font-semibold text-ink;
+  }
+  .post-html ul {
+    @apply mt-4 list-disc space-y-2 pl-5;
+  }
+  .post-html ol {
+    @apply mt-4 list-decimal space-y-2 pl-5;
+  }
+  .post-html li {
+    @apply leading-relaxed;
+  }
+  .post-html img {
+    @apply my-6 w-full rounded-2xl border border-hairline;
+  }
+  .post-html blockquote {
+    @apply mt-6 rounded-r-xl border-l-4 border-brand bg-cream p-4 text-ink/90;
+  }
+  .post-html figure {
+    @apply my-6;
+  }
+  .post-html figcaption {
+    @apply mt-2 text-center text-sm text-muted;
+  }
+}
