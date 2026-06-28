@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, type ChangeEvent, type FormEvent } from "react";
+import { useMemo, useRef, useState, type ChangeEvent, type FormEvent } from "react";
 import {
   ArrowLeft, CheckCircle2, ImagePlus, Loader2, Lock, Pencil, Plus, Send, Trash2,
 } from "lucide-react";
@@ -66,6 +66,21 @@ export function AdminEditor() {
   const [published, setPublished] = useState(true);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [uploaded, setUploaded] = useState<{ url: string; preview: string }[]>([]);
+  const contentRef = useRef<HTMLTextAreaElement>(null);
+
+  function insertAtCursor(snippet: string) {
+    const el = contentRef.current;
+    if (!el) { setContent((c) => c + snippet); return; }
+    const start = el.selectionStart ?? content.length;
+    const end = el.selectionEnd ?? start;
+    setContent((c) => c.slice(0, start) + snippet + c.slice(end));
+    requestAnimationFrame(() => {
+      el.focus();
+      const pos = start + snippet.length;
+      el.setSelectionRange(pos, pos);
+    });
+  }
 
   const effectiveSlug = useMemo(
     () => (editingExisting || slugTouched ? slug : slugify(title)),
@@ -104,7 +119,7 @@ export function AdminEditor() {
     setEditingExisting(false);
     setTitle(""); setSlug(""); setSlugTouched(false); setCategory("Genel");
     setCover(""); setAuthor(""); setExcerpt(""); setContent(""); setTags("");
-    setDate(todayISO()); setPublished(true); setNotice(null);
+    setDate(todayISO()); setPublished(true); setNotice(null); setUploaded([]);
     setStage("editor");
   }
 
@@ -119,7 +134,7 @@ export function AdminEditor() {
       setCategory(p.category ?? "Genel"); setCover(p.image ?? "");
       setAuthor(p.author ?? ""); setExcerpt(p.excerpt ?? "");
       setContent(p.contentHtml ?? blocksToHtml(p.body)); setTags((p.keywords ?? []).join(", "));
-      setDate(p.dateISO ?? todayISO()); setPublished(p.published !== false);
+      setDate(p.dateISO ?? todayISO()); setPublished(p.published !== false); setUploaded([]);
       setStage("editor");
     } catch (e) {
       setNotice({ type: "error", text: e instanceof Error ? e.message : "Yazı yüklenemedi" });
@@ -176,7 +191,8 @@ export function AdminEditor() {
         r.readAsDataURL(file);
       });
       const data = await api({ action: "upload", filename: file.name, data: dataUrl });
-      setContent((c) => `${c}\n<img src="${data.url}" alt="" />\n`);
+      insertAtCursor(`\n<img src="${data.url}" alt="" />\n`);
+      setUploaded((u) => [{ url: data.url, preview: dataUrl }, ...u]);
       setNotice({ type: "ok", text: `Görsel eklendi (${data.url}). Site ~1–2 dk içinde yayına alır.` });
     } catch (err) {
       setNotice({ type: "error", text: err instanceof Error ? err.message : "Görsel yüklenemedi" });
@@ -336,10 +352,34 @@ export function AdminEditor() {
               <input type="file" accept="image/*" className="hidden" onChange={handleUpload} disabled={uploading} />
             </label>
           </div>
-          <textarea id="content" value={content} onChange={(e) => setContent(e.target.value)} rows={16} required className={`${field} resize-y font-mono text-sm`} placeholder={"<p>Buraya yazınızı yazın.</p>\n\n<h2>Alt başlık</h2>\n<p>Paragraf… <strong>kalın</strong>, <a href=\"https://...\">link</a>.</p>\n\n<ul>\n  <li>Madde</li>\n</ul>"} />
+          <textarea id="content" ref={contentRef} value={content} onChange={(e) => setContent(e.target.value)} rows={16} required className={`${field} resize-y font-mono text-sm`} placeholder={"<p>Buraya yazınızı yazın.</p>\n\n<h2>Alt başlık</h2>\n<p>Paragraf… <strong>kalın</strong>, <a href=\"https://...\">link</a>.</p>\n\n<ul>\n  <li>Madde</li>\n</ul>"} />
           <p className="mt-1 text-xs text-muted">
-            HTML kullanın: &lt;p&gt;paragraf&lt;/p&gt; · &lt;h2&gt;başlık&lt;/h2&gt; · &lt;strong&gt;kalın&lt;/strong&gt; · &lt;a href&gt;link&lt;/a&gt;. Fotoğraf için <strong>Görsel Yükle</strong> → &lt;img&gt; otomatik eklenir.
+            HTML kullanın: &lt;p&gt;paragraf&lt;/p&gt; · &lt;h2&gt;başlık&lt;/h2&gt; · &lt;strong&gt;kalın&lt;/strong&gt; · &lt;a href&gt;link&lt;/a&gt;. Word'de yazıp bir yapay zekaya “HTML'e çevir” dedirtebilirsiniz. Fotoğraf için imlecinizi koyun, <strong>Görsel Yükle</strong>'ye basın → &lt;img&gt; otomatik eklenir.
           </p>
+
+          {uploaded.length > 0 && (
+            <div className="mt-3 rounded-xl border border-hairline bg-cream p-3">
+              <p className="text-xs font-medium text-ink">
+                Yüklenen görseller — URL'yi kopyalayıp istediğiniz yere (ya da yapay zekaya) verebilirsiniz:
+              </p>
+              <ul className="mt-2 space-y-2">
+                {uploaded.map((img) => (
+                  <li key={img.url} className="flex items-center gap-2">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={img.preview} alt="" className="h-10 w-10 shrink-0 rounded object-cover" />
+                    <code className="min-w-0 flex-1 truncate text-xs text-muted">{img.url}</code>
+                    <button
+                      type="button"
+                      onClick={() => navigator.clipboard?.writeText(img.url)}
+                      className="shrink-0 rounded-full px-2.5 py-1 text-xs font-medium text-ink ring-1 ring-hairline transition-colors hover:bg-surface"
+                    >
+                      Kopyala
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
 
         <div className="grid gap-5 sm:grid-cols-2">
